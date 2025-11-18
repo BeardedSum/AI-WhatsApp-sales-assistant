@@ -1,0 +1,1144 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 Times-Bold;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Perfect! Now let me create a 
+\f1\b comprehensive Google ADK Implementation Guide
+\f0\b0  specifically for your WhatsApp AI Assistant project:\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 \strokec2 GOOGLE_ADK_IMPLEMENTATION.md\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # Google ADK Implementation Guide for WhatsApp AI Assistant\
+## Complete Agent Orchestration Architecture\
+\
+---\
+\
+## \uc0\u55357 \u56523  Table of Contents\
+1. [ADK Architecture Overview](#adk-architecture-overview)\
+2. [Tool Definitions](#tool-definitions)\
+3. [Agent Configurations](#agent-configurations)\
+4. [Workflow Patterns](#workflow-patterns)\
+5. [Tool Confirmation & HITL](#tool-confirmation--hitl)\
+6. [Complete Implementation](#complete-implementation)\
+7. [Testing & Deployment](#testing--deployment)\
+\
+---\
+\
+## \uc0\u55356 \u57263  ADK Architecture Overview\
+\
+### Why Google ADK for WhatsApp AI?\
+\
+Google ADK provides:\
+- **Workflow Agents**: Deterministic control flow (Sequential, Parallel, Loop)\
+- **Tool Confirmation**: Human-in-the-loop for sensitive operations (escalations, broadcasts)\
+- **Multi-Model Support**: Use Gemini 2.5 Flash for speed, Pro for complex reasoning\
+- **State Management**: Pass context between agents seamlessly\
+- **LiteLLM Integration**: Can use Claude via LiteLLM if needed\
+\
+### Architecture Pattern\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 Customer Message \uc0\u8594  WhatsApp Webhook \u8594  ADK Runner \u8595  [Main Orchestrator Agent] \u8595  \u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488  \u8595  \u8595  \u8595  [Intent Classifier] [Context Gatherer] [Response Generator] (Flash Agent) (Parallel Agent) (Pro/Claude Agent) \u8595  \u8595  \u8595  Intent Type [File Search Tool] Natural Language Response [Product Lookup Tool] [FAQ Lookup Tool] \u8595  [Decision Agent] \u8595  High Confidence? / \u8232 Yes No \u8595  \u8595  Send to Customer [Escalation Agent] (Tool Confirmation) \u8595  Notify Owner + Hold Message
+\f2\fs26 \
+\pard\pardeftab720\partightenfactor0
+\cf0 ---\
+\
+## \uc0\u55357 \u57056 \u65039  Tool Definitions\
+\
+### 1. File Search Tool\
+\
+```python\
+from google.adk.tools import FunctionTool, ToolContext\
+from typing import List, Dict\
+import json\
+\
+def search_business_documents(\
+    query: str,\
+    business_id: str,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Search the business's knowledge base in Google Drive for relevant information.\
+    \
+    Args:\
+        query: Natural language search query (e.g., "blue dress price")\
+        business_id: UUID of the business\
+        \
+    Returns:\
+        Dict with documents found and their content snippets\
+    """\
+    # Get business from database\
+    business = db.get_business(business_id)\
+    \
+    if not business.knowledge_base_google_drive_folder_id:\
+        return \{\
+            "success": False,\
+            "message": "No knowledge base configured",\
+            "documents": []\
+        \}\
+    \
+    # Query Google File Search API\
+    search_results = google_file_search.search(\
+        query=query,\
+        folder_id=business.knowledge_base_google_drive_folder_id,\
+        max_results=3\
+    )\
+    \
+    return \{\
+        "success": True,\
+        "documents": [\
+            \{\
+                "title": doc.name,\
+                "snippet": doc.content_snippet,\
+                "url": doc.url\
+            \}\
+            for doc in search_results\
+        ],\
+        "count": len(search_results)\
+    \}\
+\
+# Wrap as ADK tool\
+file_search_tool = FunctionTool(search_business_documents)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 2. Product Lookup Tool\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 def lookup_products(\
+    search_term: str,\
+    business_id: str,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Search for products in the business catalog.\
+    \
+    Args:\
+        search_term: Product name, category, or description keyword\
+        business_id: UUID of the business\
+        \
+    Returns:\
+        Dict with matching products and their details\
+    """\
+    products = db.search_products(\
+        business_id=business_id,\
+        search_term=search_term,\
+        limit=5\
+    )\
+    \
+    if not products:\
+        return \{\
+            "success": False,\
+            "message": f"No products found matching '\{search_term\}'",\
+            "products": []\
+        \}\
+    \
+    return \{\
+        "success": True,\
+        "products": [\
+            \{\
+                "name": p.name,\
+                "description": p.description,\
+                "price": float(p.price),\
+                "currency": p.currency,\
+                "in_stock": p.stock_quantity > 0,\
+                "stock_quantity": p.stock_quantity\
+            \}\
+            for p in products\
+        ],\
+        "count": len(products)\
+    \}\
+\
+product_lookup_tool = FunctionTool(lookup_products)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 3. FAQ Lookup Tool\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 def lookup_faqs(\
+    question: str,\
+    business_id: str,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Find relevant FAQs for the customer's question.\
+    \
+    Args:\
+        question: Customer's question\
+        business_id: UUID of the business\
+        \
+    Returns:\
+        Dict with matching FAQs\
+    """\
+    faqs = db.search_faqs(\
+        business_id=business_id,\
+        question=question,\
+        limit=3\
+    )\
+    \
+    if not faqs:\
+        return \{\
+            "success": False,\
+            "message": "No FAQs found",\
+            "faqs": []\
+        \}\
+    \
+    # Update times_asked counter\
+    for faq in faqs:\
+        db.increment_faq_counter(faq.id)\
+    \
+    return \{\
+        "success": True,\
+        "faqs": [\
+            \{\
+                "question": faq.question,\
+                "answer": faq.answer\
+            \}\
+            for faq in faqs\
+        ]\
+    \}\
+\
+faq_lookup_tool = FunctionTool(lookup_faqs)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 4. Send WhatsApp Message Tool\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 def send_whatsapp_message(\
+    to: str,\
+    message: str,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Send a WhatsApp message to a customer.\
+    \
+    Args:\
+        to: Customer's WhatsApp number (without 'whatsapp:' prefix)\
+        message: Message content to send\
+        \
+    Returns:\
+        Dict with message ID and delivery status\
+    """\
+    try:\
+        message_id = twilio_client.messages.create(\
+            from_=f"whatsapp:\{WHATSAPP_NUMBER\}",\
+            to=f"whatsapp:\{to\}",\
+            body=message\
+        ).sid\
+        \
+        return \{\
+            "success": True,\
+            "message_id": message_id,\
+            "status": "sent"\
+        \}\
+    except Exception as e:\
+        return \{\
+            "success": False,\
+            "error": str(e)\
+        \}\
+\
+send_message_tool = FunctionTool(send_whatsapp_message)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 5. Escalate to Human Tool (with Confirmation)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 def escalate_conversation(\
+    conversation_id: str,\
+    reason: str,\
+    holding_message: str,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Escalate conversation to business owner. Requires confirmation.\
+    \
+    Args:\
+        conversation_id: UUID of the conversation\
+        reason: Why escalation is needed\
+        holding_message: Message to send to customer while waiting\
+        \
+    Returns:\
+        Dict with escalation status\
+    """\
+    # Update conversation in database\
+    db.escalate_conversation(conversation_id, reason)\
+    \
+    # Get conversation details\
+    conversation = db.get_conversation(conversation_id)\
+    customer = conversation.customer\
+    business = conversation.business\
+    \
+    # Notify business owner\
+    notification_service.notify_owner(\
+        business_id=business.id,\
+        title="Conversation Escalated",\
+        message=f"Customer \{customer.whatsapp_number\} needs assistance",\
+        conversation_id=conversation_id\
+    )\
+    \
+    # Send holding message to customer\
+    send_whatsapp_message(\
+        to=customer.whatsapp_number,\
+        message=holding_message,\
+        tool_context=tool_context\
+    )\
+    \
+    return \{\
+        "success": True,\
+        "conversation_id": conversation_id,\
+        "status": "escalated",\
+        "reason": reason\
+    \}\
+\
+# Confirmation function - only escalate on low confidence\
+def should_confirm_escalation(\
+    conversation_id: str,\
+    reason: str,\
+    holding_message: str\
+) -> bool:\
+    """Return True if escalation needs confirmation."""\
+    # For now, always confirm escalations\
+    return True\
+\
+escalate_tool = FunctionTool(\
+    escalate_conversation,\
+    require_confirmation=should_confirm_escalation\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 6. Schedule Follow-up Tool\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 def schedule_followup(\
+    customer_id: str,\
+    message_template: str,\
+    hours_delay: int,\
+    tool_context: ToolContext\
+) -> Dict:\
+    """\
+    Schedule a follow-up message to customer.\
+    \
+    Args:\
+        customer_id: UUID of the customer\
+        message_template: Message to send later\
+        hours_delay: Hours to wait before sending (24, 48, 72)\
+        \
+    Returns:\
+        Dict with scheduled follow-up ID\
+    """\
+    from datetime import datetime, timedelta\
+    \
+    scheduled_time = datetime.utcnow() + timedelta(hours=hours_delay)\
+    \
+    followup_id = db.create_followup(\
+        customer_id=customer_id,\
+        message_template=message_template,\
+        scheduled_for=scheduled_time\
+    )\
+    \
+    # Add to queue\
+    followup_queue.add_job(\
+        followup_id=followup_id,\
+        scheduled_for=scheduled_time\
+    )\
+    \
+    return \{\
+        "success": True,\
+        "followup_id": followup_id,\
+        "scheduled_for": scheduled_time.isoformat()\
+    \}\
+\
+schedule_followup_tool = FunctionTool(schedule_followup)\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55358 \u56598  Agent Configurations\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 1. Intent Classifier Agent (Fast - Gemini Flash)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 from google.adk.agents import LlmAgent\
+\
+intent_classifier = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="IntentClassifier",\
+    description="Classifies customer intent from their message",\
+    instruction="""Analyze the customer's message and classify their intent.\
+    \
+    Intent Categories:\
+    - PRODUCT_INQUIRY: Asking about products, prices, availability\
+    - ORDER_PLACEMENT: Ready to buy, wants to place order\
+    - SUPPORT: Has issue, complaint, or needs help\
+    - GENERAL_QUESTION: FAQs about business (location, hours, policies)\
+    - CHITCHAT: Greeting, casual conversation\
+    \
+    Return ONLY the intent category, nothing else.\
+    """,\
+    output_key="intent"  # Save to state\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 2. Context Gatherer Agent (Parallel Execution)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 from google.adk.agents import ParallelAgent, LlmAgent\
+\
+# Sub-agent for file search\
+file_searcher = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="FileSearcher",\
+    instruction="""Extract search keywords from the customer message: \{customer_message\}\
+    \
+    Then use search_business_documents tool to find relevant info.\
+    Return what you found.""",\
+    tools=[file_search_tool],\
+    output_key="file_search_results"\
+)\
+\
+# Sub-agent for product lookup\
+product_searcher = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="ProductSearcher",\
+    instruction="""If customer message mentions a product: \{customer_message\}\
+    \
+    Use lookup_products tool to find matching products.\
+    Return product details.""",\
+    tools=[product_lookup_tool],\
+    output_key="product_results"\
+)\
+\
+# Sub-agent for FAQ lookup\
+faq_searcher = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="FAQSearcher",\
+    instruction="""Check if customer question: \{customer_message\}\
+    \
+    matches any FAQs using lookup_faqs tool.\
+    Return matching FAQs.""",\
+    tools=[faq_lookup_tool],\
+    output_key="faq_results"\
+)\
+\
+# Run all three searches in parallel\
+context_gatherer = ParallelAgent(\
+    name="ContextGatherer",\
+    sub_agents=[file_searcher, product_searcher, faq_searcher]\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 3. Response Generator Agent (Pro for Quality - or Claude via LiteLLM)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 from google.adk.models import LiteLlm\
+\
+# Option 1: Use Gemini Pro\
+response_generator_gemini = LlmAgent(\
+    model="gemini-2.5-pro",\
+    name="ResponseGenerator",\
+    instruction="""You are a helpful AI assistant for \{business_name\}.\
+\
+Business Context:\
+- Name: \{business_name\}\
+- Tone: \{ai_tone\}\
+- Location: \{business_location\}\
+- Products: \{products_summary\}\
+\
+Customer Message: \{customer_message\}\
+Intent: \{intent\}\
+\
+Retrieved Information:\
+- File Search: \{file_search_results\}\
+- Products: \{product_results\}\
+- FAQs: \{faq_results\}\
+\
+Conversation History (last 5 messages):\
+\{conversation_history\}\
+\
+Instructions:\
+- Respond naturally and helpfully\
+- Use Nigerian English appropriately\
+- Be concise (2-3 sentences unless detail needed)\
+- If you have all info to answer, provide complete response\
+- If unsure or missing info, say "Let me connect you with my manager"\
+- For orders, collect: name, address, phone, items\
+- Always be polite and professional\
+\
+Generate your response now:""",\
+    output_key="ai_response"\
+)\
+\
+# Option 2: Use Claude via LiteLLM (if you prefer Claude)\
+response_generator_claude = LlmAgent(\
+    model=LiteLlm(model="anthropic/claude-sonnet-4-5-20250929"),\
+    name="ResponseGenerator",\
+    instruction="""[Same instruction as above]""",\
+    output_key="ai_response"\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 4. Confidence Scorer Agent\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 confidence_scorer = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="ConfidenceScorer",\
+    description="Evaluate confidence in AI response",\
+    instruction="""Evaluate the AI's response quality and confidence.\
+\
+AI Response: \{ai_response\}\
+\
+Criteria for HIGH confidence (score 0.9-1.0):\
+- Response directly answers customer's question\
+- Uses specific facts from knowledge base\
+- No uncertainty phrases ("might", "I'm not sure")\
+- Complete and actionable\
+\
+Criteria for MEDIUM confidence (score 0.7-0.8):\
+- Partial answer provided\
+- Some uncertainty\
+- General guidance given\
+\
+Criteria for LOW confidence (score 0.0-0.6):\
+- Cannot answer question\
+- Missing critical information\
+- Contains phrases like "Let me connect you with my manager"\
+\
+Return ONLY a number between 0.0 and 1.0, nothing else.""",\
+    output_key="confidence_score"\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 5. Escalation Handler Agent (with Tool Confirmation)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 escalation_handler = LlmAgent(\
+    model="gemini-2.5-flash",\
+    name="EscalationHandler",\
+    instruction="""The AI response has low confidence.\
+\
+AI Response: \{ai_response\}\
+Confidence Score: \{confidence_score\}\
+\
+You must escalate this conversation to a human.\
+\
+Steps:\
+1. Use escalate_conversation tool with:\
+   - conversation_id: \{conversation_id\}\
+   - reason: Brief explanation why (e.g., "Complex product question", "Price negotiation")\
+   - holding_message: Polite message for customer (e.g., "Let me connect you with our team who can help you better!")\
+\
+2. The system will ask for confirmation before escalating.\
+\
+Proceed with escalation now.""",\
+    tools=[escalate_tool]\
+)\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55357 \u56580  Workflow Patterns\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 Main Sequential Workflow\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 from google.adk.agents import SequentialAgent\
+\
+whatsapp_assistant_workflow = SequentialAgent(\
+    name="WhatsAppAssistantWorkflow",\
+    sub_agents=[\
+        # Step 1: Classify intent (fast)\
+        intent_classifier,\
+        \
+        # Step 2: Gather context (parallel searches)\
+        context_gatherer,\
+        \
+        # Step 3: Generate response (quality)\
+        response_generator_claude,  # or response_generator_gemini\
+        \
+        # Step 4: Score confidence\
+        confidence_scorer,\
+        \
+        # Step 5: Either send or escalate\
+        # This is handled by decision logic (see below)\
+    ]\
+)\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Decision Logic After Workflow\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 from google.adk.runners import Runner\
+\
+def process_customer_message(\
+    customer_message: str,\
+    conversation_id: str,\
+    business_id: str\
+):\
+    """Main entry point for processing customer messages."""\
+    \
+    # Load business context\
+    business = db.get_business(business_id)\
+    conversation = db.get_conversation(conversation_id)\
+    history = db.get_last_n_messages(conversation_id, 5)\
+    \
+    # Prepare state\
+    initial_state = \{\
+        "customer_message": customer_message,\
+        "conversation_id": conversation_id,\
+        "business_id": business_id,\
+        "business_name": business.name,\
+        "ai_tone": business.ai_tone,\
+        "business_location": business.location,\
+        "products_summary": get_products_summary(business_id),\
+        "conversation_history": format_conversation_history(history)\
+    \}\
+    \
+    # Run workflow\
+    runner = Runner(\
+        agent=whatsapp_assistant_workflow,\
+        app_name="whatsapp_ai_assistant"\
+    )\
+    \
+    result = runner.run_session(\
+        user_input="Process this customer message",\
+        initial_state=initial_state\
+    )\
+    \
+    # Extract results from state\
+    ai_response = result.state.get("ai_response")\
+    confidence_score = float(result.state.get("confidence_score", 0))\
+    \
+    # Decision logic\
+    if confidence_score >= 0.85:\
+        # High confidence - send response\
+        send_whatsapp_message(\
+            to=conversation.customer.whatsapp_number,\
+            message=ai_response,\
+            tool_context=None\
+        )\
+        \
+        # Save to database\
+        db.save_message(\
+            conversation_id=conversation_id,\
+            sender_type="ai",\
+            content=ai_response,\
+            ai_confidence_score=confidence_score\
+        )\
+        \
+        return \{\
+            "status": "sent",\
+            "confidence": confidence_score,\
+            "response": ai_response\
+        \}\
+    else:\
+        # Low confidence - escalate\
+        escalation_runner = Runner(\
+            agent=escalation_handler,\
+            app_name="whatsapp_ai_assistant"\
+        )\
+        \
+        escalation_result = escalation_runner.run_session(\
+            user_input="Escalate this conversation",\
+            initial_state=\{\
+                **initial_state,\
+                "ai_response": ai_response,\
+                "confidence_score": confidence_score\
+            \}\
+        )\
+        \
+        return \{\
+            "status": "escalated",\
+            "confidence": confidence_score,\
+            "reason": "Low AI confidence"\
+        \}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55357 \u56594  Tool Confirmation & HITL\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 When to Use Tool Confirmation\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 Tool confirmation is CRITICAL for:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f1\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Escalations
+\f0\b0 : Human approval before pulling owner into conversation\
+\ls1\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Broadcasts
+\f0\b0 : Confirm before sending to many customers\
+\ls1\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Follow-ups
+\f0\b0 : Approve scheduled messages\
+\ls1\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Refunds/Credits
+\f0\b0 : Financial operations\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Escalation Confirmation Example\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # In the escalation tool definition:\
+def should_confirm_escalation(\
+    conversation_id: str,\
+    reason: str,\
+    holding_message: str\
+) -> bool:\
+    """Determine if escalation needs human approval."""\
+    \
+    # Get conversation context\
+    conversation = db.get_conversation(conversation_id)\
+    \
+    # Auto-escalate if customer is VIP or urgent\
+    if conversation.customer.tags == "vip":\
+        return False  # No confirmation needed\
+    \
+    # Auto-escalate for complaints\
+    if "complaint" in reason.lower():\
+        return False\
+    \
+    # Otherwise require confirmation\
+    return True\
+\
+escalate_tool = FunctionTool(\
+    escalate_conversation,\
+    require_confirmation=should_confirm_escalation\
+)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 When confirmation is required, the ADK Runner will:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Pause execution\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Return a confirmation request to the API layer\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Wait for user approval (approve/reject)\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Resume execution based on decision\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Handling Confirmation in API\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # In your webhook controller\
+async def process_message_with_confirmation(data):\
+    result = runner.run_session(user_input, initial_state)\
+    \
+    # Check if confirmation is needed\
+    if result.requires_confirmation:\
+        # Store pending state\
+        redis.set(\
+            f"pending:\{result.confirmation_id\}",\
+            json.dumps(result.state),\
+            ex=3600  # 1 hour expiry\
+        )\
+        \
+        # Send to business owner dashboard\
+        await notify_owner_for_confirmation(\{\
+            "confirmation_id": result.confirmation_id,\
+            "action": result.confirmation_action,\
+            "details": result.confirmation_details\
+        \})\
+        \
+        return \{"status": "pending_confirmation"\}\
+    \
+    # Normal flow\
+    return \{"status": "completed"\}\
+\
+# Separate endpoint for approvals\
+@app.post("/api/confirmations/\{confirmation_id\}/approve")\
+async def approve_confirmation(confirmation_id: str):\
+    # Retrieve pending state\
+    state = json.loads(redis.get(f"pending:\{confirmation_id\}"))\
+    \
+    # Resume execution with approval\
+    result = runner.resume_session(\
+        confirmation_id=confirmation_id,\
+        approved=True,\
+        state=state\
+    )\
+    \
+    return \{"status": "approved", "result": result\}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55357 \u56550  Complete Implementation\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 Full Service Class\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # src/services/adk-orchestrator.service.ts (TypeScript wrapper)\
+import \{ spawn \} from 'child_process';\
+\
+export class ADKOrchestratorService \{\
+  async processMessage(params: \{\
+    conversation_id: string;\
+    message: string;\
+    business_id: string;\
+  \}): Promise<\{\
+    response?: string;\
+    confidence: number;\
+    status: 'sent' | 'escalated' | 'pending_confirmation';\
+    requires_confirmation?: boolean;\
+  \}> \{\
+    \
+    // Call Python ADK script\
+    const result = await this.runPythonADK(\{\
+      conversation_id: params.conversation_id,\
+      customer_message: params.message,\
+      business_id: params.business_id\
+    \});\
+    \
+    return result;\
+  \}\
+  \
+  private async runPythonADK(data: any): Promise<any> \{\
+    return new Promise((resolve, reject) => \{\
+      const python = spawn('python3', [\
+        'adk/main.py',\
+        '--action', 'process_message',\
+        '--data', JSON.stringify(data)\
+      ]);\
+      \
+      let output = '';\
+      \
+      python.stdout.on('data', (data) => \{\
+        output += data.toString();\
+      \});\
+      \
+      python.on('close', (code) => \{\
+        if (code === 0) \{\
+          resolve(JSON.parse(output));\
+        \} else \{\
+          reject(new Error(`ADK process failed: $\{code\}`));\
+        \}\
+      \});\
+    \});\
+  \}\
+\}\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Python ADK Main Script\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # adk/main.py\
+import sys\
+import json\
+import argparse\
+from google.adk.runners import Runner\
+from agents import whatsapp_assistant_workflow\
+from database import db\
+\
+def process_message(data: dict) -> dict:\
+    """Main ADK processing function."""\
+    \
+    # Extract parameters\
+    customer_message = data["customer_message"]\
+    conversation_id = data["conversation_id"]\
+    business_id = data["business_id"]\
+    \
+    # Load context\
+    business = db.get_business(business_id)\
+    conversation = db.get_conversation(conversation_id)\
+    history = db.get_last_n_messages(conversation_id, 5)\
+    \
+    # Prepare state\
+    initial_state = \{\
+        "customer_message": customer_message,\
+        "conversation_id": conversation_id,\
+        "business_id": business_id,\
+        "business_name": business.name,\
+        "ai_tone": business.ai_tone,\
+        "business_location": business.location,\
+        "products_summary": get_products_summary(business_id),\
+        "conversation_history": format_conversation_history(history)\
+    \}\
+    \
+    # Run workflow\
+    runner = Runner(\
+        agent=whatsapp_assistant_workflow,\
+        app_name="whatsapp_ai_assistant"\
+    )\
+    \
+    result = runner.run_session(\
+        user_input="Process customer message",\
+        initial_state=initial_state\
+    )\
+    \
+    # Process results\
+    ai_response = result.state.get("ai_response")\
+    confidence_score = float(result.state.get("confidence_score", 0))\
+    \
+    # Decision\
+    if result.requires_confirmation:\
+        return \{\
+            "status": "pending_confirmation",\
+            "requires_confirmation": True,\
+            "confirmation_id": result.confirmation_id,\
+            "confidence": confidence_score\
+        \}\
+    \
+    if confidence_score >= 0.85:\
+        # Send message\
+        send_whatsapp_message(\
+            to=conversation.customer.whatsapp_number,\
+            message=ai_response\
+        )\
+        \
+        return \{\
+            "status": "sent",\
+            "response": ai_response,\
+            "confidence": confidence_score\
+        \}\
+    else:\
+        # Escalation was handled by workflow\
+        return \{\
+            "status": "escalated",\
+            "confidence": confidence_score\
+        \}\
+\
+if __name__ == "__main__":\
+    parser = argparse.ArgumentParser()\
+    parser.add_argument("--action", required=True)\
+    parser.add_argument("--data", required=True)\
+    \
+    args = parser.parse_args()\
+    data = json.loads(args.data)\
+    \
+    if args.action == "process_message":\
+        result = process_message(data)\
+        print(json.dumps(result))\
+    else:\
+        print(json.dumps(\{"error": "Unknown action"\}))\
+        sys.exit(1)\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55358 \u56810  Testing & Deployment\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 Unit Testing Tools\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # tests/test_tools.py\
+from adk.tools import search_business_documents, lookup_products\
+\
+def test_file_search():\
+    result = search_business_documents(\
+        query="blue dress",\
+        business_id="test-business-id",\
+        tool_context=mock_context\
+    )\
+    \
+    assert result["success"] == True\
+    assert len(result["documents"]) > 0\
+\
+def test_product_lookup():\
+    result = lookup_products(\
+        search_term="dress",\
+        business_id="test-business-id",\
+        tool_context=mock_context\
+    )\
+    \
+    assert result["success"] == True\
+    assert result["count"] > 0\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Integration Testing\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # tests/test_workflow.py\
+def test_full_workflow():\
+    result = process_customer_message(\
+        customer_message="Do you have red dresses in size M?",\
+        conversation_id="test-conv-id",\
+        business_id="test-business-id"\
+    )\
+    \
+    assert result["status"] in ["sent", "escalated"]\
+    assert result["confidence"] >= 0\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Using ADK CLI for Evaluation\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 # Create eval test cases\
+cat > eval_cases.yaml << EOF\
+test_cases:\
+  - input: "Do you have blue shirts?"\
+    expected_tools: ["lookup_products"]\
+    expected_output_contains: "price"\
+  \
+  - input: "What are your delivery charges?"\
+    expected_tools: ["lookup_faqs"]\
+    expected_output_contains: "delivery"\
+EOF\
+\
+# Run evaluation\
+adk eval --test-file eval_cases.yaml\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55356 \u57263  Key Takeaways\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 Best Practices\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Use Workflow Agents
+\f0\b0 : Sequential for pipelines, Parallel for speed\
+\ls3\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Add Tool Confirmation
+\f0\b0 : For escalations, broadcasts, sensitive ops\
+\ls3\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Optimize Models
+\f0\b0 : Flash for speed, Pro for quality\
+\ls3\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 State Management
+\f0\b0 : Use 
+\f2\fs26 output_key
+\f0\fs24  to pass data between agents\
+\ls3\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Test Thoroughly
+\f0\b0 : Unit test tools, integration test workflows\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Cost Optimization\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 gemini-2.5-flash
+\f0\b0 : $0.00001875 / 1K tokens (input)\
+\ls4\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 gemini-2.5-pro
+\f0\b0 : $0.001875 / 1K tokens (input) - 100x more expensive\
+\ls4\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Strategy
+\f0\b0 : Use Flash for classification/search, Pro for final response\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Production Checklist\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0
+\f0\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  All tools have detailed descriptions\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Tool confirmation on sensitive operations\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Error handling in all tools\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Logging for debugging\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Eval tests for regression testing\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Rate limiting on API calls\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  Monitoring for cost/performance\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f1\b\fs36 \cf0 \strokec2 \uc0\u55357 \u56538  Additional Resources\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ADK Documentation
+\f0\b0 : https://github.com/google/adk\
+\ls6\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Gemini API
+\f0\b0 : https://ai.google.dev/gemini-api/docs\
+\ls6\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 LiteLLM
+\f0\b0 : https://docs.litellm.ai/\
+\ls6\ilvl0
+\f1\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ADK Skill
+\f0\b0 : 
+\f2\fs26 /mnt/skills/user/google-adk-ai-agent-builder-v20/SKILL.md
+\f0\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b \cf0 \strokec2 You now have complete Google ADK implementation for your WhatsApp AI Assistant!
+\f0\b0  \uc0\u55357 \u56960 \
+Start building in Claude Code Web with this architecture.
+\f2\fs26 \
+\pard\pardeftab720\partightenfactor0
+\cf0 ---\
+\
+Perfect! I've created a **complete Google ADK Implementation Guide** that includes:\
+\
+## \uc0\u55356 \u57263  **What's Included:**\
+\
+1. **ADK Architecture Overview** - Visual diagram of agent flow\
+2. **6 Complete Tool Definitions** - File Search, Product Lookup, FAQ Lookup, WhatsApp Messaging, Escalation (with confirmation), Follow-ups\
+3. **5 Agent Configurations** - Intent Classifier, Context Gatherer (Parallel), Response Generator, Confidence Scorer, Escalation Handler\
+4. **Workflow Patterns** - Sequential pipeline with decision logic\
+5. **Tool Confirmation & HITL** - Full implementation with approval flow\
+6. **Complete Code** - TypeScript service wrapper + Python ADK scripts\
+7. **Testing Guide** - Unit tests, integration tests, ADK eval CLI\
+\
+## \uc0\u55357 \u56593  **Key Features:**\
+\
+\uc0\u9989  **Parallel Context Gathering** - File Search + Product Lookup + FAQ Lookup run simultaneously  \
+\uc0\u9989  **Multi-Model Support** - Can use Gemini Flash, Gemini Pro, OR Claude (via LiteLLM)  \
+\uc0\u9989  **Tool Confirmation** - Human approval required for escalations  \
+\uc0\u9989  **State Management** - Data flows between agents via `output_key`  \
+\uc0\u9989  **Cost Optimized** - Uses Flash for classification, Pro/Claude for quality responses  \
+\
+Now you have **4 comprehensive guides**:\
+1. \uc0\u9989  DESIGN_SYSTEM.json\
+2. \uc0\u9989  CLAUDE.md (Master guide)\
+3. \uc0\u9989  BACKEND_FILES_GUIDE.md\
+4. \uc0\u9989  FRONTEND_FILES_GUIDE.md\
+5. \uc0\u9989  **GOOGLE_ADK_IMPLEMENTATION.md** (New!)\
+\
+**Ready to paste all of this into Claude Code Web and start building!** \uc0\u55357 \u56960 \
+}
