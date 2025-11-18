@@ -58,11 +58,20 @@ app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'WhatsApp AI Assistant API',
     version: '1.0.0',
-    phase: 'Phase 2 - WhatsApp Integration',
+    phase: 'Phase 3 - AI Intelligence with LiteLLM',
     endpoints: {
       health: '/health',
       webhook: '/api/webhook/whatsapp',
     },
+    features: [
+      'Twilio WhatsApp Integration',
+      'AI-Powered Responses with Function Calling',
+      'Product Lookup',
+      'FAQ Search',
+      'Intelligent Escalation',
+      'Conversation History Context',
+      'Confidence Scoring',
+    ],
   });
 });
 
@@ -104,7 +113,8 @@ const startServer = async () => {
       console.log(`📡 API: http://localhost:${PORT}/api`);
       console.log(`💚 Health: http://localhost:${PORT}/health`);
       console.log(`📲 Webhook: http://localhost:${PORT}/api/webhook/whatsapp`);
-      console.log(`📊 Phase: 2 - WhatsApp Integration`);
+      console.log(`🤖 Phase: 3 - AI Intelligence`);
+      console.log(`🧠 AI Model: ${process.env.AI_MODEL || 'gemini/gemini-2.0-flash-exp'}`);
       console.log('================================');
       console.log('');
     });

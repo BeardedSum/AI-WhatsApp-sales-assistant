@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { whatsappService } from '../services/whatsapp.service';
 import { databaseService } from '../services/database.service';
+import { aiOrchestratorService } from '../services/ai-orchestrator.service';
 
 /**
  * Webhook Controller
@@ -99,20 +100,52 @@ export class WebhookController {
       // Step 5: Update customer interaction timestamp
       await databaseService.updateCustomerInteraction(customer.id);
 
-      // Step 6: Generate AI response (placeholder for Phase 3)
-      // For now, send a simple acknowledgment
-      const aiResponse = this.generateTemporaryResponse(messageData.body, business.name);
-
-      // Step 7: Send AI response via WhatsApp
-      await whatsappService.sendMessage(messageData.from, aiResponse);
-
-      // Step 8: Save AI response to database
-      await databaseService.saveMessage({
+      // Step 6: Generate AI response using AI Orchestrator (Phase 3)
+      const aiResult = await aiOrchestratorService.processMessage({
+        customerMessage: messageData.body,
         conversationId: conversation.id,
-        senderType: 'ai',
-        content: aiResponse,
-        aiConfidenceScore: 0.5, // Placeholder - will be real in Phase 3
+        businessId: business.id,
+        customerId: customer.id,
       });
+
+      // Step 7: Handle escalation if needed
+      if (aiResult.shouldEscalate) {
+        console.log(`⬆️  Low confidence (${aiResult.confidence.toFixed(2)}), escalating...`);
+
+        await databaseService.escalateConversation(
+          conversation.id,
+          `Low AI confidence: ${aiResult.confidence.toFixed(2)}`
+        );
+
+        // Send holding message to customer
+        const holdingMessage =
+          aiResult.response ||
+          "Thank you for your message. Let me connect you with our team who can assist you better!";
+
+        await whatsappService.sendMessage(messageData.from, holdingMessage);
+
+        // Save escalation message
+        await databaseService.saveMessage({
+          conversationId: conversation.id,
+          senderType: 'ai',
+          content: holdingMessage,
+          aiConfidenceScore: aiResult.confidence,
+        });
+
+        // TODO: Notify business owner via push notification / email (Phase 4)
+        console.log(`📧 Should notify business owner about escalation`);
+      } else {
+        // Step 8: Send AI response via WhatsApp
+        await whatsappService.sendMessage(messageData.from, aiResult.response);
+
+        // Step 9: Save AI response to database
+        await databaseService.saveMessage({
+          conversationId: conversation.id,
+          senderType: 'ai',
+          content: aiResult.response,
+          aiConfidenceScore: aiResult.confidence,
+        });
+      }
 
       console.log(`✅ Message processing complete for ${messageData.from}`);
     } catch (error) {
