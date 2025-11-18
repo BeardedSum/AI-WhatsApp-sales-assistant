@@ -34,16 +34,28 @@ Help small businesses (food vendors, fashion retailers, real estate agents) auto
 
 See [backend/README.md](backend/README.md) for detailed setup instructions.
 
-### 🔄 Phase 2: WhatsApp Integration (NEXT)
+### ✅ Phase 2: WhatsApp Integration (COMPLETED)
 
-**Planned:**
+**What's Built:**
 - Twilio WhatsApp Business API integration
-- Webhook for receiving messages
-- Message sending functionality
+- Webhook controller with < 15s response time
+- Message sending (text + media)
 - Webhook signature verification
 - Async message processing
+- Database service for automatic record creation
+- Temporary keyword-based responses
 
-### 🔄 Phase 3: Google ADK Integration
+**Features:**
+- Receives WhatsApp messages via Twilio webhook
+- Automatically creates business/customer/conversation records
+- Sends AI responses (placeholder - enhanced in Phase 3)
+- Saves all messages to database
+- Detects and stores media messages
+- Error handling with customer notifications
+
+See [PHASE2_COMPLETION.md](PHASE2_COMPLETION.md) for detailed documentation.
+
+### 🔄 Phase 3: Google ADK Integration (NEXT)
 
 **Planned:**
 - Intent classification agent

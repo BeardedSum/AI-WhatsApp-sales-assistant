@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { config } from 'dotenv';
 import { initializeDatabase, closeDatabase } from './config/database';
+import webhookRoutes from './routes/webhook.routes';
 
 // Load environment variables
 config();
@@ -57,6 +58,7 @@ app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'WhatsApp AI Assistant API',
     version: '1.0.0',
+    phase: 'Phase 2 - WhatsApp Integration',
     endpoints: {
       health: '/health',
       webhook: '/api/webhook/whatsapp',
@@ -64,10 +66,8 @@ app.get('/api', (req: Request, res: Response) => {
   });
 });
 
-// Placeholder webhook route (will be implemented in Phase 2)
-app.post('/api/webhook/whatsapp', (req: Request, res: Response) => {
-  res.status(200).send('Webhook endpoint ready');
-});
+// Webhook routes (Phase 2)
+app.use('/api/webhook', webhookRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
@@ -103,6 +103,8 @@ const startServer = async () => {
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`📡 API: http://localhost:${PORT}/api`);
       console.log(`💚 Health: http://localhost:${PORT}/health`);
+      console.log(`📲 Webhook: http://localhost:${PORT}/api/webhook/whatsapp`);
+      console.log(`📊 Phase: 2 - WhatsApp Integration`);
       console.log('================================');
       console.log('');
     });
