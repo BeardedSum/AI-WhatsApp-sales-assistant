@@ -5,6 +5,12 @@ import rateLimit from 'express-rate-limit';
 import { config } from 'dotenv';
 import { initializeDatabase, closeDatabase } from './config/database';
 import webhookRoutes from './routes/webhook.routes';
+import authRoutes from './routes/auth.routes';
+import dashboardRoutes from './routes/dashboard.routes';
+import conversationsRoutes from './routes/conversations.routes';
+import productsRoutes from './routes/products.routes';
+import faqsRoutes from './routes/faqs.routes';
+import businessRoutes from './routes/business.routes';
 
 // Load environment variables
 config();
@@ -58,10 +64,16 @@ app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'WhatsApp AI Assistant API',
     version: '1.0.0',
-    phase: 'Phase 3 - AI Intelligence with LiteLLM',
+    phase: 'Phase 4 - Complete with Dashboard',
     endpoints: {
       health: '/health',
       webhook: '/api/webhook/whatsapp',
+      auth: '/api/auth',
+      dashboard: '/api/dashboard',
+      conversations: '/api/conversations',
+      products: '/api/products',
+      faqs: '/api/faqs',
+      business: '/api/business',
     },
     features: [
       'Twilio WhatsApp Integration',
@@ -71,12 +83,35 @@ app.get('/api', (req: Request, res: Response) => {
       'Intelligent Escalation',
       'Conversation History Context',
       'Confidence Scoring',
+      'JWT Authentication',
+      'Dashboard Analytics',
+      'Conversation Management',
+      'Product & FAQ CRUD',
+      'Business Settings',
     ],
   });
 });
 
 // Webhook routes (Phase 2)
 app.use('/api/webhook', webhookRoutes);
+
+// Authentication routes (Phase 4)
+app.use('/api/auth', authRoutes);
+
+// Dashboard routes (Phase 4)
+app.use('/api/dashboard', dashboardRoutes);
+
+// Conversation routes (Phase 4)
+app.use('/api/conversations', conversationsRoutes);
+
+// Product routes (Phase 4)
+app.use('/api/products', productsRoutes);
+
+// FAQ routes (Phase 4)
+app.use('/api/faqs', faqsRoutes);
+
+// Business routes (Phase 4)
+app.use('/api/business', businessRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
@@ -113,7 +148,12 @@ const startServer = async () => {
       console.log(`📡 API: http://localhost:${PORT}/api`);
       console.log(`💚 Health: http://localhost:${PORT}/health`);
       console.log(`📲 Webhook: http://localhost:${PORT}/api/webhook/whatsapp`);
-      console.log(`🤖 Phase: 3 - AI Intelligence`);
+      console.log(`🔐 Auth: http://localhost:${PORT}/api/auth`);
+      console.log(`📊 Dashboard: http://localhost:${PORT}/api/dashboard`);
+      console.log(`💬 Conversations: http://localhost:${PORT}/api/conversations`);
+      console.log(`🛍️  Products: http://localhost:${PORT}/api/products`);
+      console.log(`❓ FAQs: http://localhost:${PORT}/api/faqs`);
+      console.log(`🤖 Phase: 4 - Complete with Dashboard`);
       console.log(`🧠 AI Model: ${process.env.AI_MODEL || 'gemini/gemini-2.0-flash-exp'}`);
       console.log('================================');
       console.log('');
