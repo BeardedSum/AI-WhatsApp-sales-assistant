@@ -16,8 +16,8 @@ def search_business_documents(
     """
     Search the business's knowledge base in Google Drive for relevant information.
 
-    This tool would integrate with Google File Search API in Phase 5.
-    For Phase 3, we return a placeholder response.
+    Searches uploaded documents in the database. Can integrate with Google Drive
+    for full-text search when credentials are configured.
 
     Args:
         query: Natural language search query (e.g., "blue dress price")
@@ -26,30 +26,41 @@ def search_business_documents(
     Returns:
         Dict with documents found and their content snippets
     """
-    # Get business
-    business = db.get_business(business_id)
+    try:
+        # Search documents in database
+        documents = db.search_documents(business_id, query, limit=5)
 
-    if not business:
+        if not documents:
+            return {
+                "success": False,
+                "message": f"No documents found matching '{query}'",
+                "documents": []
+            }
+
+        # Format documents for AI consumption
+        formatted_docs = []
+        for doc in documents:
+            doc_info = {
+                "name": doc['name'],
+                "description": doc.get('description') or "No description",
+                "url": doc['google_drive_url'],
+                "file_type": doc.get('file_type', 'unknown')
+            }
+            formatted_docs.append(doc_info)
+
         return {
-            "success": False,
-            "message": "Business not found",
-            "documents": []
+            "success": True,
+            "documents": formatted_docs,
+            "count": len(formatted_docs),
+            "message": f"Found {len(formatted_docs)} document(s)"
         }
 
-    # Check if knowledge base is configured
-    if not business.get('knowledge_base_google_drive_folder_id'):
+    except Exception as e:
         return {
             "success": False,
-            "message": "No knowledge base configured. Document search available in Phase 5.",
+            "message": f"Error searching documents: {str(e)}",
             "documents": []
         }
-
-    # Placeholder for Phase 5 Google Drive integration
-    return {
-        "success": False,
-        "message": "Document search will be implemented in Phase 5",
-        "documents": []
-    }
 
 
 def lookup_products(

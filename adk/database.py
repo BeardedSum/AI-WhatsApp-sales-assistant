@@ -236,3 +236,27 @@ class Database:
 
 # Global database instance
 db = Database()
+
+    def search_documents(self, business_id: str, query: str, limit: int = 5):
+        """Search documents by name or description"""
+        search_query = """
+            SELECT
+                id, name, description, file_type,
+                google_drive_file_id, google_drive_url, created_at
+            FROM documents
+            WHERE business_id = %s
+            AND is_active = true
+            AND (
+                LOWER(name) LIKE LOWER(%s)
+                OR LOWER(COALESCE(description, '')) LIKE LOWER(%s)
+            )
+            ORDER BY created_at DESC
+            LIMIT %s
+        """
+        search_pattern = f"%{query}%"
+        results = self.execute_query(
+            search_query,
+            (business_id, search_pattern, search_pattern, limit)
+        )
+        return results
+

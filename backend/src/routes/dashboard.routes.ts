@@ -11,4 +11,8 @@ router.get('/stats', authenticateToken, (req, res) =>
   dashboardController.getStats(req, res)
 );
 
+router.get('/charts', authenticateToken, (req, res) =>
+  dashboardController.getCharts(req, res)
+);
+
 export default router;

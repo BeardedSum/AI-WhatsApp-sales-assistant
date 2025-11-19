@@ -11,6 +11,8 @@ import conversationsRoutes from './routes/conversations.routes';
 import productsRoutes from './routes/products.routes';
 import faqsRoutes from './routes/faqs.routes';
 import businessRoutes from './routes/business.routes';
+import documentsRoutes from './routes/documents.routes';
+import broadcastsRoutes from './routes/broadcasts.routes';
 
 // Load environment variables
 config();
@@ -64,7 +66,7 @@ app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'WhatsApp AI Assistant API',
     version: '1.0.0',
-    phase: 'Phase 4 - Complete with Dashboard',
+    phase: 'Phase 6 - Complete with Advanced Features',
     endpoints: {
       health: '/health',
       webhook: '/api/webhook/whatsapp',
@@ -74,6 +76,8 @@ app.get('/api', (req: Request, res: Response) => {
       products: '/api/products',
       faqs: '/api/faqs',
       business: '/api/business',
+      documents: '/api/documents',
+      broadcasts: '/api/broadcasts',
     },
     features: [
       'Twilio WhatsApp Integration',
@@ -88,6 +92,9 @@ app.get('/api', (req: Request, res: Response) => {
       'Conversation Management',
       'Product & FAQ CRUD',
       'Business Settings',
+      'Document Management & Search',
+      'Broadcast Messaging',
+      'Advanced Analytics',
     ],
   });
 });
@@ -112,6 +119,12 @@ app.use('/api/faqs', faqsRoutes);
 
 // Business routes (Phase 4)
 app.use('/api/business', businessRoutes);
+
+// Document routes (Phase 5)
+app.use('/api/documents', documentsRoutes);
+
+// Broadcast routes (Phase 6)
+app.use('/api/broadcasts', broadcastsRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
@@ -153,7 +166,9 @@ const startServer = async () => {
       console.log(`💬 Conversations: http://localhost:${PORT}/api/conversations`);
       console.log(`🛍️  Products: http://localhost:${PORT}/api/products`);
       console.log(`❓ FAQs: http://localhost:${PORT}/api/faqs`);
-      console.log(`🤖 Phase: 4 - Complete with Dashboard`);
+      console.log(`📄 Documents: http://localhost:${PORT}/api/documents`);
+      console.log(`📢 Broadcasts: http://localhost:${PORT}/api/broadcasts`);
+      console.log(`🤖 Phase: 6 - Complete with Advanced Features`);
       console.log(`🧠 AI Model: ${process.env.AI_MODEL || 'gemini/gemini-2.0-flash-exp'}`);
       console.log('================================');
       console.log('');

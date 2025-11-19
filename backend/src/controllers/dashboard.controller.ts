@@ -12,6 +12,72 @@ import { AuthRequest } from '../middleware/auth.middleware';
 
 export class DashboardController {
   /**
+   * GET /api/dashboard/charts
+   * Get chart data for analytics
+   */
+  async getCharts(req: AuthRequest, res: Response): Promise<void> {
+    try {
+      const businessId = req.businessId;
+      const { days = '7' } = req.query;
+
+      if (!businessId) {
+        res.status(401).json({
+          success: false,
+          error: { message: 'Not authenticated', code: 'NOT_AUTHENTICATED' },
+        });
+        return;
+      }
+
+      const daysNum = parseInt(days as string);
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - daysNum);
+
+      const conversationRepo = AppDataSource.getRepository(Conversation);
+      const messageRepo = AppDataSource.getRepository(Message);
+
+      // Conversations over time
+      const conversationsOverTime = await conversationRepo
+        .createQueryBuilder('conv')
+        .select('DATE(conv.created_at)', 'date')
+        .addSelect('COUNT(*)', 'count')
+        .where('conv.business_id = :businessId', { businessId })
+        .andWhere('conv.created_at >= :startDate', { startDate })
+        .groupBy('DATE(conv.created_at)')
+        .orderBy('DATE(conv.created_at)', 'ASC')
+        .getRawMany();
+
+      // Messages over time
+      const messagesOverTime = await messageRepo
+        .createQueryBuilder('msg')
+        .innerJoin('msg.conversation', 'conv')
+        .select('DATE(msg.created_at)', 'date')
+        .addSelect('COUNT(*)', 'count')
+        .where('conv.business_id = :businessId', { businessId })
+        .andWhere('msg.created_at >= :startDate', { startDate })
+        .groupBy('DATE(msg.created_at)')
+        .orderBy('DATE(msg.created_at)', 'ASC')
+        .getRawMany();
+
+      res.json({
+        success: true,
+        data: {
+          conversations_over_time: conversationsOverTime,
+          messages_over_time: messagesOverTime,
+        },
+      });
+    } catch (error) {
+      console.error('Dashboard charts error:', error);
+      res.status(500).json({
+        success: false,
+        error: {
+          message: 'Failed to fetch chart data',
+          code: 'INTERNAL_ERROR',
+        },
+      });
+    }
+  }
+
+  /**
    * GET /api/dashboard/stats
    * Get dashboard statistics and analytics
    */

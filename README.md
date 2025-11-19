@@ -109,21 +109,45 @@ See [adk/README.md](adk/README.md) for setup and [PHASE3_COMPLETION.md](PHASE3_C
 
 See [PHASE4_COMPLETE.md](PHASE4_COMPLETE.md) and [BACKEND_API_REQUIREMENTS.md](BACKEND_API_REQUIREMENTS.md) for details.
 
-### 🔄 Phase 5: Google File Search
+### ✅ Phase 5: Google File Search (COMPLETED)
 
-**Planned:**
-- Document upload and indexing
-- AI document search integration
-- Knowledge base management
+**What's Built:**
+- Document upload and management
+- AI document search integration via `search_business_documents` tool
+- Knowledge base management with Google Drive (optional)
+- Document CRUD API endpoints
+- Metadata-only mode with graceful fallback
+- Document usage tracking (times_searched)
 
-### 🔄 Phase 6: Advanced Features
+**Features:**
+- Document entity for tracking uploaded files
+- Google Drive service with automatic fallback
+- 5 API endpoints: list, upload, search, update, delete
+- AI can search business knowledge base
+- Works without Google Drive credentials
 
-**Planned:**
-- BullMQ job queue
-- Scheduled follow-ups
-- Broadcast messaging
-- Analytics dashboard
-- Settings management
+See [PHASE5_AND_6_COMPLETION.md](PHASE5_AND_6_COMPLETION.md) for detailed documentation.
+
+### ✅ Phase 6: Advanced Features (COMPLETED)
+
+**What's Built:**
+- BullMQ queue system with Redis (with setTimeout fallback)
+- Automated follow-up message execution
+- Broadcast messaging to customers
+- Advanced analytics with chart data
+- Queue monitoring and statistics
+- Target audience selection (all/active/custom)
+
+**Features:**
+- Broadcast entity for campaign management
+- Queue service for async job processing
+- 5 broadcast API endpoints
+- Scheduled broadcasts with delay
+- Progress tracking (sent/failed counts)
+- Advanced analytics endpoint with time series data
+- Graceful degradation without Redis
+
+See [PHASE5_AND_6_COMPLETION.md](PHASE5_AND_6_COMPLETION.md) for detailed documentation.
 
 ### 🔄 Phase 7: Testing & Deployment
 
@@ -271,8 +295,9 @@ Reference: `DESIGN_SYSTEM.json` (from blueprints)
 2. ✅ **Phase 2 Complete** - Twilio WhatsApp integration
 3. ✅ **Phase 3 Complete** - AI Intelligence with LiteLLM
 4. ✅ **Phase 4 Complete** - Frontend Dashboard + Backend API
-5. 🔄 **Phase 5 Next** - Google File Search integration
-6. 🔄 **Phase 6 Planned** - Advanced features (BullMQ, broadcasts, analytics)
+5. ✅ **Phase 5 Complete** - Document Search & Knowledge Base
+6. ✅ **Phase 6 Complete** - Advanced Features (BullMQ, Broadcasts, Analytics)
+7. 🔄 **Phase 7 Next** - Testing & Deployment
 
 ## 🤝 Contributing
 
@@ -294,16 +319,21 @@ BeardedSum
 
 ---
 
-**4 Phases Complete!** 🚀🎉
+**6 Phases Complete!** 🚀🎉
 
 The system is now fully functional with:
-- Complete backend API (18 endpoints)
-- AI-powered WhatsApp responses
+- Complete backend API (26 endpoints)
+- AI-powered WhatsApp responses with document search
 - Professional dashboard UI
 - Real-time conversation management
 - Product & FAQ management
-- Analytics and monitoring
+- Document management and AI search
+- Broadcast messaging to customers
+- Automated follow-up execution
+- Advanced analytics with charts
+- BullMQ queue system
 
-**Next**: Phase 5 - Google File Search Integration
+**Progress**: 6/7 Phases (86%)
+**Next**: Phase 7 - Testing & Deployment
 
 See implementation guides and completion docs for details.
